@@ -1,0 +1,46 @@
+/* Estilos para impresión de etiquetas QR */
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background: white;
+  }
+
+  /* Ocultar elementos de UI */
+  .no-print,
+  nav,
+  aside,
+  header,
+  footer,
+  button:not(.print-visible) {
+    display: none !important;
+  }
+
+  /* Área de impresión */
+  .print-area {
+    display: block !important;
+    width: 100%;
+  }
+
+  /* Etiquetas */
+  .print-label {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border: 1px solid #e5e7eb;
+    margin: 4px;
+    padding: 8px;
+  }
+
+  /* Grid de etiquetas */
+  .print-grid {
+    display: grid !important;
+    gap: 8px;
+    width: 100%;
+  }
+
+  @page {
+    margin: 10mm;
+    size: A4;
+  }
+}

@@ -1,0 +1,35 @@
+/* Estilos específicos para el escáner QR */
+
+#qr-reader {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+#qr-reader video {
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+#qr-reader__scan_region {
+  background: #000;
+}
+
+#qr-reader__dashboard {
+  padding: 1rem;
+}
+
+#qr-reader__dashboard button {
+  background-color: #1e40af;
+  color: white;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+#qr-reader__dashboard button:hover {
+  background-color: #1d4ed8;
+}

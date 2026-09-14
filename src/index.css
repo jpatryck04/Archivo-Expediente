@@ -1,0 +1,92 @@
+
+@import 'tailwindcss';
+@import './styles/print.css';
+@import './styles/scanner.css';
+@config "../tailwind.config.js";
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --border: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+.app-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(59 130 246 / 0.55) transparent;
+}
+
+.app-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.app-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.app-scrollbar::-webkit-scrollbar-thumb {
+  background: rgb(96 165 250 / 0.55);
+  border-radius: 999px;
+}
+
+.app-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgb(147 197 253 / 0.8);
+}
+
+.qr-preview-grid {
+  grid-template-columns: repeat(var(--qr-columns), minmax(0, 1fr));
+}
+
+@media (max-width: 639px) {
+  .qr-preview-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .qr-preview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Estilos de impresión para etiquetas QR */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-label {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  @page {
+    margin: 10mm;
+  }
+}
+
+/* Estilos para el escáner QR */
+#qr-reader {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#qr-reader video {
+  border-radius: 0.5rem;
+}
