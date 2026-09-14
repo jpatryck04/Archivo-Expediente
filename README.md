@@ -139,7 +139,7 @@ El perfil `consulta` funciona exclusivamente como usuario de lectura:
 ### 1. Clonar el proyecto
 
 ```bash
-git clone <url-del-repositorio>
+git clone https://github.com/jpatryck04/Archivo-Expediente.git
 cd archivo-expedientes
 ```
 
