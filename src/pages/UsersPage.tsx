@@ -149,7 +149,20 @@ export function UsersPage() {
       setActionUser(null);
       setUserAction(null);
     } catch (error) {
-      const message = error instanceof Error ? error.message : 'No se pudo completar la acción';
+      let message = error instanceof Error ? error.message : 'No se pudo completar la acción';
+
+      if (error && typeof error === 'object' && 'context' in error) {
+        const context = (error as { context?: Response }).context;
+        if (context) {
+          try {
+            const body = await context.clone().json() as { error?: string };
+            message = body.error || message;
+          } catch {
+            // Mantener el mensaje original si la respuesta no contiene JSON.
+          }
+        }
+      }
+
       toast.error(message);
     } finally {
       setActionLoading(false);
